@@ -8,6 +8,25 @@ Hint - use Date class exposed in JS
 There is no automated test for this one, this is more for you to understand time goes up as computation goes up
 */
 
-function calculateTime(n) {
-    return 0.01;
+function calculateSum(n) {
+  // Compute the sum from 1 to n using the arithmetic progression formula
+  return (n * (n + 1)) / 2;
 }
+
+function calculateTime(n) {
+  let startTime = new Date();
+  let sum = calculateSum(n);
+  let endTime = new Date();
+  console.log(
+    "Start time:",
+    startTime,
+    "End Time:",
+    endTime,
+    "Time Difference:",
+    endTime - startTime,
+    "Sum:",
+    sum
+  );
+}
+
+calculateTime(1000000000);
