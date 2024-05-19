@@ -1,6 +1,6 @@
 /*
   Implement a class `Calculator` having below methods
-    - initialise a result variable in the constructor and keep updating it after every arithmetic operation
+    - initialize a result variable in the constructor and keep updating it after every arithmetic operation
     - add: takes a number and adds it to the result
     - subtract: takes a number and subtracts it from the result
     - multiply: takes a number and multiply it to the result
@@ -16,6 +16,65 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+
+  add(number) {
+    this.result += number;
+    return this.result;
+  }
+
+  subtract(number) {
+    this.result -= number;
+    return this.result;
+  }
+
+  multiply(number) {
+    this.result *= number;
+    return this.result;
+  }
+
+  divide(number) {
+    if (number === 0) {
+      throw new Error("Cannot divide by zero");
+    }
+    this.result /= number;
+    return this.result;
+  }
+
+  clear() {
+    this.result = 0;
+    return this.result;
+  }
+
+  getResult() {
+    return this.result;
+  }
+
+  calculate(expression) {
+    // Remove all spaces from the expression
+    expression = expression.replace(/\s+/g, "");
+
+    // Validate the expression to contain only valid characters (digits, operators, and parentheses)
+    if (!/^[0-9+\-*/().]*$/.test(expression)) {
+      throw new Error("Invalid expression");
+    }
+
+    // Check for division by zero
+    if (/\/0/.test(expression)) {
+      throw new Error("Cannot divide by zero");
+    }
+
+    try {
+      // Evaluate the expression using the Function constructor
+      this.result = Function('"use strict";return (' + expression + ")")();
+      return this.result;
+    } catch (error) {
+      throw new Error("Invalid expression");
+    }
+  }
+}
 
 module.exports = Calculator;
