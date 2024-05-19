@@ -21,21 +21,25 @@ class Calculator {
     this.result = 0;
   }
 
+  // method to add numbers
   add(number) {
     this.result += number;
     return this.result;
   }
 
+  // method to subtract numbers
   subtract(number) {
     this.result -= number;
     return this.result;
   }
 
+  // method to multiply numbers
   multiply(number) {
     this.result *= number;
     return this.result;
   }
 
+  // method to divide numbers
   divide(number) {
     if (number === 0) {
       throw new Error("Cannot divide by zero");
@@ -44,15 +48,18 @@ class Calculator {
     return this.result;
   }
 
+  // method to clear result
   clear() {
     this.result = 0;
     return this.result;
   }
 
+  // method to get result
   getResult() {
     return this.result;
   }
 
+  // method to calculate expression
   calculate(expression) {
     // Remove all spaces from the expression
     expression = expression.replace(/\s+/g, "");
